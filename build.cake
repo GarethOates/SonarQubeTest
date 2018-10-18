@@ -1,7 +1,8 @@
 #tool "nuget:?package=xunit.runner.console"
+#tool "nuget:?package=OpenCover"
 
-var solution = "./UDI.UIP.PJ_1026_FamFaglaertAutomatisering.sln";
-var project = "PJ_1026_FamFaglaertAutomatisering";
+var solution = "./SonarQubeTest.sln";
+var project = "SonarQubeTest";
 var projectFolder = "./" + project;
 
 // Clean
@@ -30,33 +31,48 @@ Task("Clean")
 
 // Restore
 
-Task("Restore").Does(() => NuGetRestoreSolution(solution));
+Task("Restore").Does(() => NuGetRestore(solution));
 
 // Build
 
 Task("Build")
 	.IsDependentOn("Restore")
-	.IsDependentOn("Update")
-	.Does(() => MSBuildSolution(solution));
+	.Does(() => MSBuild(solution));
 
 // Test
 
 Task("Test")
 	.IsDependentOn("Build")
-	.Does(() => 
+	.Does(() =>
 {
 	var testResults = "./TestResults";
+
+	var coverSettings = new OpenCoverSettings()
+		.WithFilter("+[SonarQubeTest*]*")
+		.WithFilter("-[CalculatorTest*]*");
 
 	if (!DirectoryExists(testResults))
 	{
 		CreateDirectory(testResults);
 	}
 
-	XUnit2("./UnitTests/bin/Debug/UDI.UIP." + project + ".UnitTests.dll", new XUnit2Settings() { 
-		OutputDirectory = new DirectoryPath(testResults),
-		XmlReport = true,
-		HtmlReport = false
-	});
+	coverSettings.NoDefaultFilters = true;
+
+	OpenCover(
+		tool =>
+		{
+			tool.XUnit2(
+				"./CalculatorTests/bin/Debug/CalculatorTests.dll",
+				new XUnit2Settings {
+					OutputDirectory = new DirectoryPath(testResults),
+					XmlReport = true,
+					HtmlReport = false
+				}
+			);
+		},
+		new FilePath(new DirectoryPath(testResults) + "/CodeCoverage.xml"),
+		coverSettings
+	);
 });
 
 // Default target
