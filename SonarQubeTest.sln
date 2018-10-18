@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SonarQubeTest", "SonarQubeTest\SonarQubeTest.csproj", "{4995E1BF-26B6-45AB-A19D-712250172808}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "CalculatorTests\CalculatorTests.csproj", "{4842E128-003F-4ED7-A8AA-B5BFD9E7A35B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4995E1BF-26B6-45AB-A19D-712250172808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4995E1BF-26B6-45AB-A19D-712250172808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4995E1BF-26B6-45AB-A19D-712250172808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4842E128-003F-4ED7-A8AA-B5BFD9E7A35B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4842E128-003F-4ED7-A8AA-B5BFD9E7A35B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4842E128-003F-4ED7-A8AA-B5BFD9E7A35B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4842E128-003F-4ED7-A8AA-B5BFD9E7A35B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
