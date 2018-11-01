@@ -37,7 +37,9 @@ Task("Restore").Does(() => NuGetRestore(solution));
 
 Task("Build")
 	.IsDependentOn("Restore")
-	.Does(() => MSBuild(solution));
+	.Does(() => MSBuild(solution, configurator =>
+		configurator.SetConfiguration("Debug"))
+);
 
 // Test
 
@@ -48,8 +50,8 @@ Task("Test")
 	var testResults = "./TestResults";
 
 	var coverSettings = new OpenCoverSettings()
-		.WithFilter("+[SonarQubeTest*]*")
-		.WithFilter("-[CalculatorTest*]*");
+		.WithFilter("+[SonarQubeTest.*]*")
+		.WithFilter("-[CalculatorTest.*]*");
 
 	if (!DirectoryExists(testResults))
 	{
