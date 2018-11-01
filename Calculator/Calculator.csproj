@@ -8,7 +8,7 @@
     <ProjectGuid>{4995E1BF-26B6-45AB-A19D-712250172808}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>SonarQubeTest</RootNamespace>
-    <AssemblyName>SonarQubeTest</AssemblyName>
+    <AssemblyName>Calculator</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

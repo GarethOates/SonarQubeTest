@@ -1,4 +1,4 @@
-﻿using SonarQubeTest;
+﻿using Utilities;
 using System;
 using Xunit;
 

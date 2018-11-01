@@ -1,4 +1,4 @@
-﻿namespace SonarQubeTest
+﻿namespace Utilities
 {
     public interface ICalculator
     {

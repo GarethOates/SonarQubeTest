@@ -1,8 +1,9 @@
 #tool "nuget:?package=xunit.runner.console"
 #tool "nuget:?package=OpenCover"
+#tool "nuget:?package=ReportGenerator"
 
 var solution = "./SonarQubeTest.sln";
-var project = "SonarQubeTest";
+var project = "Calculator";
 var projectFolder = "./" + project;
 
 // Clean
@@ -56,11 +57,13 @@ Task("Test")
 		CreateDirectory(testResults);
 	}
 
+	FilePath codeCoverage = new FilePath(new DirectoryPath(testResults) + "/CodeCoverage.xml");
+
 	OpenCover(
 		tool =>
 		{
 			tool.XUnit2(
-				"./CalculatorTests/bin/Debug/CalculatorTests.dll",
+				"./Calculator.Tests/bin/Debug/CalculatorTests.dll",
 				new XUnit2Settings {
 					OutputDirectory = new DirectoryPath(testResults),
 					XmlReport = true,
@@ -68,7 +71,7 @@ Task("Test")
 				}
 			);
 		},
-		new FilePath(new DirectoryPath(testResults) + "/CodeCoverage.xml"),
+		codeCoverage,
 		coverSettings
 	);
 });
