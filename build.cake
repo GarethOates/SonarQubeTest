@@ -50,7 +50,9 @@ Task("Test")
 {
 	var testResults = "./TestResults";
 
-	var coverSettings = new OpenCoverSettings();
+	var coverSettings = new OpenCoverSettings()
+		.WithFilter("+[Calculator.*]*");
+		.WithFilter("-[Calculator.Tests.*]*")
 
 	if (!DirectoryExists(testResults))
 	{
