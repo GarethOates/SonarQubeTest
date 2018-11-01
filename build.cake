@@ -49,16 +49,12 @@ Task("Test")
 {
 	var testResults = "./TestResults";
 
-	var coverSettings = new OpenCoverSettings()
-		.WithFilter("+[SonarQubeTest.*]*")
-		.WithFilter("-[CalculatorTest.*]*");
+	var coverSettings = new OpenCoverSettings();
 
 	if (!DirectoryExists(testResults))
 	{
 		CreateDirectory(testResults);
 	}
-
-	coverSettings.NoDefaultFilters = true;
 
 	OpenCover(
 		tool =>
